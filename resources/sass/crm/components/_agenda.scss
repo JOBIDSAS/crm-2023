@@ -1,0 +1,114 @@
+.fc{
+  .fc-header-toolbar{
+      margin-bottom: 10px;
+      .fc-toolbar-chunk{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .fc-toolbar-title{
+              color: $primary-blue;
+              font-size: 15px;
+              text-transform: uppercase;
+              font-weight: 500;
+          }
+          .fc-button-group{
+            .fc-button{
+              .fc-icon{
+                vertical-align: initial;
+              }
+            }
+          }
+          .fc-button{
+              &.fc-dayGridMonth-button{
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 13px;
+                  line-height: 13px;
+                  background: $primary-gray4;
+                  font-weight: 500;
+                  border:none;
+              }
+              &.fc-prev-button{
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 13px;
+                  line-height: 13px;
+                  background: $primary-gray4;
+                  font-weight: 500;
+                  border:none;
+              }
+              &.fc-next-button{
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 13px;
+                  line-height: 13px;
+                  background: $primary-gray4;
+                  font-weight: 500;
+                  border:none;
+              }
+              &.fc-today-button{
+                  height: 30px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  font-size: 13px;
+                  line-height: 13px;
+                  background: $primary-gray4;
+                  font-weight: 500;
+                  border:none;
+              }
+          }
+      }
+  }
+  .fc-view-harness{
+      .fc-view{
+          .fc-scrollgrid{
+              .fc-scrollgrid-section{
+                  &.fc-scrollgrid-section-header{
+                      .fc-scroller-harness{
+                          .fc-scroller{
+                              .fc-col-header{
+                                  .fc-col-header-cell{
+                                      .fc-scrollgrid-sync-inner{
+                                          .fc-col-header-cell-cushion{
+                                              text-decoration: none;
+                                              color: $primary-red;
+                                              font-weight: 500;
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+                  &.fc-scrollgrid-section-body{
+                      .fc-scroller-harness{
+                          .fc-scroller{
+                              .fc-daygrid-body{
+                                  .fc-scrollgrid-sync-table{
+                                      .fc-daygrid-day{
+                                          .fc-daygrid-day-frame{
+                                              .fc-daygrid-day-top{
+                                                  .fc-daygrid-day-number{
+                                                      text-decoration: none;
+                                                      color: $primary-blue;
+                                                  }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+}

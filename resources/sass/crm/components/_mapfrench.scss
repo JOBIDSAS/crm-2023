@@ -1,0 +1,35 @@
+.mapfrench_container{
+  height: 100%;
+  .mapfrench_wrapper{
+    display: flex;
+    flex-direction: column;
+    .map_title{
+      text-align: center;
+    }
+    .map_content{
+      height: 100%;
+      max-height: 550px;
+      g{
+        path{
+            fill: $concrete;
+            stroke: $white;
+            stroke-width: 1px;
+            cursor: pointer;
+            transition: .3s;
+            &.selected{
+                fill: $primary-red;
+            }
+        }
+        &:hover path{
+            fill: $primary-blue;
+        }
+        path:hover{
+            fill: $primary-red;
+            stroke: $white;
+            stroke-width: 1px;
+            cursor: pointer;
+        }
+      }
+    }
+  }
+}

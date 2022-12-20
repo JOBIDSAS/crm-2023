@@ -1,0 +1,91 @@
+.appointment_container{
+  background: $primary-blue;
+  min-height: 100vh;
+  height: 100%;
+  .appointment_wrapper{
+    background:#F2F2F2;
+    overflow: hidden;
+    border-radius: 10px;
+    .appointment_header{
+      .header_logo{
+        .logo{
+          width: 60px;
+        }
+      }
+    }
+    .appointment_body {
+      .logo_box{
+        position: relative;
+        overflow: hidden;
+        width: 220px;
+        .calendar{
+          width: 180px;
+          animation: swing-top-fwd 0.8s ease-in reverse both;
+        }
+        .tick{
+          position: absolute;
+          bottom: 0;
+          right: -60px;
+          animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.8s both;
+        }
+      }
+      .info_txt{
+        color:$primary-blue; 
+        font-weight: 700;
+        text-align: center;
+      }
+      .info_button {
+        padding: 10px;
+        color: white;
+        font-size: 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        background: $primary-blue;
+        &:hover{
+          transition: .3s;
+          box-shadow: 0px ​0px 5px black;
+          background: $primary-red;
+        }
+      }
+    }
+    .appointment_footer{
+      background: $primary-red;
+      padding: 5px;
+      .social_list{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        .social_items{
+          list-style: none;
+          margin: 0 4px;
+          .social_href{
+            text-decoration: none;
+            .social_logo{
+              width: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes swing-top-fwd {
+  0% {
+    transform: rotateX(0);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: rotateX(180deg);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-70px);
+  }
+}

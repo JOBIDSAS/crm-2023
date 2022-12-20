@@ -1,0 +1,25 @@
+.profile_container{
+  .profile_wrapper{
+    .avatar_holder{
+      position: relative;
+      overflow: visible;
+      .avatar_change{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: $primary-gray;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $primary-blue;
+        border-radius: 100%;
+        border: none;
+        .change_logo{
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

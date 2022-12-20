@@ -1,0 +1,25 @@
+.form-check {
+    .form-check-input:checked{
+        background-color: #F4150B;
+        border-color: #F4150B;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+    }
+    .form-check-input{
+        border: 5px solid rgba(0, 0, 0, 0.25);
+    }
+
+}
+.row {
+    .col-md-12 {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .form-control {
+        height: 130%;
+        width: 78%;
+        border-radius: 9.25px;
+    }
+
+}

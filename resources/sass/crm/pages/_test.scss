@@ -1,0 +1,147 @@
+.test_container{
+  min-height: calc(100vh - 80px);
+  .test_wrapper{
+    height: 100%;
+    .test_form{
+      height: 100%;
+      min-height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      .form_header{
+        flex: 0 110px;
+        .fheader_wrapper{
+          height: 110px;
+          display: flex;
+          flex-direction: column;
+          .header_top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .top_step{
+              color: $primary-blue;
+              margin: 0;
+              span{
+                text-transform: uppercase;
+                font-size: 40px;
+                color: $primary-red;
+              }
+            }
+          }
+          .header_bottom{
+            display: flex;
+            justify-content: center;
+            .bottom_title{
+              text-align: center;
+              margin: 0;
+            }
+          }
+        }
+      }
+      .form_body{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .fbody_wrapper{
+          width: 100%;
+          height: 100%;
+          .steps_content{
+            width: 100%;
+            .step{
+              .input_text_custom{
+                outline: none;
+                box-shadow: none;
+                border: none;
+                height: 48px;
+              }
+              .input_radio_custom{
+                &:checked  ~ label.input_radio_custom_label{
+                    background: $primary-red;
+                    color: white;
+                }
+              }
+              .input_radio_custom_label{
+                  width: 140px;
+                  height: 48px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  transition: .3s;
+                  outline: none;
+                  box-shadow: none;
+                  border: none;
+                  color: $primary-gray4;
+                  background: white;
+                  &.full_width{
+                    width: 100% !important;
+                  }
+                  &:hover{
+                    background: $primary-gray4;
+                    color: white;
+                  }
+              }
+              .scroll_bar_custom{
+                overflow: auto;
+                &::-webkit-scrollbar {
+                  -webkit-appearance: none;
+                  width: 5px;
+                  background: $primary-gray3;
+                }
+                &::-webkit-scrollbar-track {
+                    background: white;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background: $primary-gray3;
+                }
+              }
+              @import "../components/agenda";
+            }
+          }
+        }
+      }
+      .form_footer{
+        flex: 0 50px;
+        .ffooter_wrapper{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 50px;
+          .footer_top{
+            display: flex;
+            flex-direction: row;
+          }
+          .footer_bottom{
+            .bottom_progress{
+              position: relative;
+              height: 10px;
+              background: white;
+              overflow: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 10px;
+              .progress_text{
+                width: 100%;
+                height: 10px;
+                color: black;
+                font-size: 10px;
+                z-index: 1;
+                font-weight: 700;
+                line-height: 10px;
+                text-align: center;
+              }
+              .progress_bar{
+                position: absolute;
+                width: 50%;
+                top: 0;
+                left: 0;
+                height: 10px;
+                background: $primary-red;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
