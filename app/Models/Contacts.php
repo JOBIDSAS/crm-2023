@@ -52,6 +52,7 @@ class Contacts extends Model
         "position",
         "comment",
         "situation",
+        "etat",
         "lead",
         "garbage",
     ];

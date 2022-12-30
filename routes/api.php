@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CRM\SignController;
 use App\Http\Controllers\CRM\TestController;
 use App\Http\Controllers\CRM\LeadsController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\CRM\ProfileController;
 use App\Http\Controllers\CRM\CalendarController;
 use App\Http\Controllers\CRM\ClientsController;
@@ -25,6 +26,9 @@ Route::get("clients/get", [ClientsController::class, "getClients"]);
 Route::post("avis/save", [ClientsController::class, "clientAvis"]);
 
 
+Route::post("password/email",[SignController::class,"forgot"]);
+Route::get('forgot-password/{token}', [SignController::class, 'forgotPasswordValidate']);
+Route::post("reset",[SignController::class,"updatePassword"]);
 // api pour obtenir les liste des utilisateurs
 Route::middleware(["auth:api"])->group(function(){
 Route::get("users/get",[ProfileController::class, "getUsers"]);
@@ -94,6 +98,7 @@ Route::middleware(["auth:api"])->group(function(){
 
     // obtenir tous les client selon l'utilisateur
     Route::get("contacts/all",[LeadsController::class,"getLeadsList"]);
+      Route::post("contacts/etat",[LeadsController::class,"changetat"]);
     // obtenir un client selon l'id
     Route::get("contacts/{cid}",[LeadsController::class,"getLeadContact"]);
     // renvoyer l'email de teste d'egibilité
@@ -104,6 +109,8 @@ Route::middleware(["auth:api"])->group(function(){
   Route::prefix("calendar")->group(function(){
       //obtenir les dates de rendez-vous
     Route::get("events/get",[CalendarController::class,"getEvents"]);
+    Route::post("events/delete",[CalendarController::class,"deletevent"]);
+
   });
 
   Route::prefix("profile")->group(function(){

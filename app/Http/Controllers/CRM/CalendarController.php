@@ -21,4 +21,10 @@ class CalendarController extends GlobalController
     {
         return $this->getAllEvents(3);
     }
+    public function deletevent(Request $request ){
+        $events = Calendar::where('id',$request->id);
+        $events->delete();
+        return response()->json(["message"=>"rendez-vous supprimé avec succes"]);
+
+    }
 }

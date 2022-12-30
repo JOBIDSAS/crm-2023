@@ -224,7 +224,7 @@ class TestController extends Controller
         }
 
         else {
-            $events = Calendar::where("users_id",Auth::id())->get();
+            $events = Calendar::where("users_id",Auth::id())->where("confirmed",0)->get();
         }
         return response()->json([
             "events"=>$events
@@ -413,13 +413,15 @@ class TestController extends Controller
         $companyForm["intracommunity_number"] = "";
         $companyForm["siret"] = $company->siret;
         $companyForm["comments"] = "";
-        $contactForm["custom_fields"] = [
+        $companyForm["custom_fields"] = [
             "Lien Zoom" => $meeting->link,
             "id zoom" => $meeting->zoom_id,
             "Secteur d'activité" => $activities->name,
             "Téléconseiller" => $User->first_name,
             "pass zoom" => $meeting->password,
             "Date Zoom" => $calendar,
+            "Email" => $contact->email,
+            "Téléphone" => $contact->phone,
             "Subvention" => $grant->grants,
             "Prix de Vente" => $grant->sell_price,
             "Projet" => $grant->orientation,
@@ -496,6 +498,7 @@ class TestController extends Controller
         $contactForm["gender"] = "";
         $contactForm["firstname"] =$contact->first_name;
         $contactForm["lastname"] = $contact->last_name;
+        $contactForm["is_billing_contact"] = true;
         $contactForm["email"] = $contact->email;
         $contactForm["phone_number"] =$contact->phone;
         $contactForm["cellphone_number"] = "";

@@ -39,6 +39,7 @@ class LeadContactsResources extends JsonResource
             "situation" => $this->situation,
             "lead" => $this->lead,
             "confirmed" => $this->confirmed,
+            "etat" => $this->etat,
             "created" => $this->created_at,
             "updated" => $this->updated_at,
             "company"=>[
@@ -138,6 +139,6 @@ class LeadContactsResources extends JsonResource
             "voucher"=>$voucherRes->name,
             "amount"=>($budget * $voucherRes->refund)/100,
             "region"=>Regions::where("id",$voucherRes->regions_id)->pluck("name")->first()
-        ]; 
+        ];
     }
 }

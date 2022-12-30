@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\CRM;
 
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\OauthAccessTokens;
+use App\Mail\ResetPassword;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Mail\Mailable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Laravel\Passport\TokenRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Database\QueryException;
@@ -100,11 +108,75 @@ class SignController extends Controller
         return response()->json(["error"=>false,"message"=>"logout"]);
     }
 
+
     public function forgot(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            return back()->with('failed', 'Failed! email is not registered.');
+        }
+
+        $token = Str::random(60);
+
+        $user['remember_token'] = $token;
+        $user->save();
+
+        Mail::to($request->email)->send(new ResetPassword($user->name, $token));
+
+        if(Mail::failures() != 0) {
+            return response([
+                'success'=> 'Success! password reset link has been sent to your email'
+            ]);
+
+        }
+        return response([
+            'failed'=> 'Failed! there is some issue with email provider'
+        ]);
+
 
     }
 
+    public function forgotPasswordValidate($token)
+    {
+
+        $user = User::where('remember_token', $token)->first();
+        if ($user) {
+            return response([
+                'success'=> 'Valid token'
+            ]);
+        }
+        return response([
+            'failed'=> 'token invalid'
+        ]);
+    }
+
+
+    public function updatePassword(Request $request) {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required|min:6',
+            'confirm_password' => 'required|same:password'
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        if ($user) {
+            $user['remember_token'] = '';
+            $user['password'] = Hash::make($request->password);
+            $user->update();
+            return response([
+                'success'=> 'Success! password a ete changé avec succées'
+            ]);
+        }
+        return response([
+            'failed'=> 'Failed! something went wrong'
+        ]);
+
+
+    }
     public function signVerify(Request $request)
     {
 
